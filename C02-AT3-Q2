@@ -1,0 +1,52 @@
+def string_match(text, pattern):
+    n, m = len(text), len(pattern)
+
+    for i in range(n - m + 1):
+        j = 0
+
+        while j < m and text[i + j] == pattern[j]:
+            j += 1
+
+        if j == m:
+            return i
+
+    return -1
+
+
+text = input("Enter text: ")
+pattern = input("Enter pattern: ")
+
+result = string_match(text, pattern)
+
+print("Output:", result)
+
+Test Case 1
+Input
+Text = ABCDE
+Pattern = DE
+Output
+3
+Test Case 2
+Input
+Text = HELLOWORLD
+Pattern = WORLD
+Output
+5
+Test Case 3
+Input
+Text = COMPUTER
+Pattern = PUT
+Output
+3
+Test Case 4
+Input
+Text = PYTHON
+Pattern = JAVA
+Output
+-1
+Test Case 5
+Input
+Text = BANANA
+Pattern = ANA
+Output
+1
