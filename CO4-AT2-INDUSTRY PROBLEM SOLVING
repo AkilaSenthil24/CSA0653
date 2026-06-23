@@ -1,0 +1,60 @@
+//AKILA S (192424331)
+
+Question 1: Warehouse Delivery Route Optimization
+
+edges = [(0,1,2),(0,2,3),(1,2,1),(1,3,4),(2,3,5)]
+parent = [0,1,2,3]
+def find(x):
+    while parent[x] != x:
+        x = parent[x]
+    return x
+cost = 0
+for u, v, w in sorted(edges, key=lambda x: x[2]):
+    if find(u) != find(v):
+        cost += w
+        parent[find(u)] = find(v)
+print("Minimum Transportation Cost =", cost)
+
+TEST CASE:
+Input:
+(0,1,2)
+(0,2,3)
+(1,2,1)
+(1,3,4)
+(2,3,5)
+Output:
+Minimum Transportation Cost = 7
+
+Question 2: Production Budget Optimization
+
+profits = [25000, 40000, 50000, 65000]
+investments = [20000, 30000, 40000, 50000]
+budget = 100000
+n = len(profits)
+dp = [[0]*(budget+1) for _ in range(n+1)]
+for i in range(1, n+1):
+    for w in range(budget+1):
+        if investments[i-1] <= w:
+            dp[i][w] = max(
+                profits[i-1] + dp[i-1][w-investments[i-1]],
+                dp[i-1][w]
+            )
+        else:
+            dp[i][w] = dp[i-1][w]
+print("Maximum Profit =", dp[n][budget])
+
+TEST CASE:
+Input:
+Budget = 100000
+Product A : Investment = 20000 , Profit = 25000
+Product B : Investment = 30000 , Profit = 40000
+Product C : Investment = 40000 , Profit = 50000
+Product D : Investment = 50000 , Profit = 65000
+Output:
+Maximum Profit = 130000
+Optimal Product Selection
+A + B + D
+Total Investment:
+20000 + 30000 + 50000 = 100000
+Total Profit:
+25000 + 40000 + 65000 = 130000
