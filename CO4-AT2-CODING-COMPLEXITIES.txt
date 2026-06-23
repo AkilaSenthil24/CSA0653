@@ -1,0 +1,21 @@
+Time Complexities and Space Complexities Of Prim's Algorithm and Kruskal's Algorithm
+
+Algorithm	           Time Complexity 	Space Complexity
+Prim's Algorithm	      O(V²)	             O(V²)
+Kruskal's Algorithm	    O(E log E)	           O(V + E)
+
+Prim's Algorithm
+Outer loop  = V
+Inner loop  = V
+Total       = V × V
+Time Complexity = O(V²)
+Space Complexity = O(V²)
+
+ Kruskal's Algorithm
+Time Complexity = O(E log E)
+Space Complexity
+Arrays used:
+edges  = O(E)
+parent = O(V)
+Total:
+Space Complexity = O(V + E)
